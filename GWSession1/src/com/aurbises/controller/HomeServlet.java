@@ -42,7 +42,7 @@ public class HomeServlet extends HttpServlet {
 		//String name = request.getParameter("txtName");
 		//String age = request.getParameter("txtAge");
 		
-		
+	
 		// Get Data from HTTPSession API
 		HttpSession session = request.getSession();
 		String name = (String)session.getAttribute("keyName");
