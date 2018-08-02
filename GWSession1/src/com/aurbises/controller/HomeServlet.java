@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -50,6 +52,12 @@ public class HomeServlet extends HttpServlet {
 		
 		
 		out.print("Name : "+name+"<br/>Age: "+age);
+		
+		// Extract Data from these API's
+		ServletContext context = getServletContext();
+		ServletConfig config = getServletConfig();
+		
+		//...
 		
 	}
 

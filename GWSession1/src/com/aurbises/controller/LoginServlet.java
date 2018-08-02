@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			
 			//4. HttpSession API
 			
-			out.print("<h4><a href='Welcome'>Enter Home</a></h4>");
+			out.print("<h4><a href='Auribises'>Enter Home</a></h4>");
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("keyName", name);
