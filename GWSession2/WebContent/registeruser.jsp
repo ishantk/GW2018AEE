@@ -16,21 +16,43 @@
 		user.email = request.getParameter("txtEmail");
 		user.password = request.getParameter("txtPassword");
 		
-		JDBCHelper helper = new JDBCHelper();
+		/*JDBCHelper helper = new JDBCHelper();
 		helper.createConnection();
 		int i = helper.registerUser(user);
-		helper.closeConnection();
+		helper.closeConnection();*/
 		
 		
-		if(i>0){
+		/*Cookie ck1 = new Cookie("keyName",user.name);
+		Cookie ck2 = new Cookie("keyEmail",user.email);
+		
+		response.addCookie(ck1);
+		response.addCookie(ck2);*/
+		
+		// How we can clear the cookies ??
+		// Explore
+		
+		// Assignment : Implement One time Login with Cookies | Remember Me
+		
+		// HttpSession
+		session.setAttribute("keyName", user.name);
+		session.setAttribute("keyEmail", user.email);
+		
+		// Assignment : Inplement LoginIn | LogOut
+		
+		//session.invalidate(); -> remove everything from Session Object
+		
+		//if(i>0){
 	%>		
 		<h2>Registration Successful !!</h2>
+		<a href="home.jsp">Enter Home</a>
+		
+		
 	<%
-		}else{
+		//}else{
 	%>	
-		<h2>Registration Failed !!</h2>
+		<!-- <h2>Registration Failed !!</h2> -->
 	<%
-		}
+		//}
 	%>
 
 </body>
