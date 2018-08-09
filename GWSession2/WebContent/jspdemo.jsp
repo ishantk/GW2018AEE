@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page errorPage="errorpage.jsp" %> 
+<%@ page import="java.util.Date" %>
+<%@ page isThreadSafe="true" %>
+<%@ page buffer="8kb" %>
+<%@ include file="printdate.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +16,7 @@
 </head>
 <body>
 	<h3>Welcome to JSP Demo</h3>
+	Its: <%= new Date() %>
 	<h2>Scriptlet - Where we can code in Java</h2>
 		
 	<%
@@ -48,6 +57,27 @@
 	<b>c is: <%= c %></b>
 	<br/>
 	<b>area of circle with radius 7.65 is: <%= areaOfCircle(5.65f) %></b>
+	
+	<br/>
+	<%
+		
+		int[] arr = {10,20,30,40,50};
+		out.print("arr[1] is: "+arr[1]);
+		/*try{
+			out.print("arr[10] is: "+arr[10]);
+		}catch(Exception e){
+			out.print("Some exception: "+e);
+		}*/
+	%>
+	
+	<h3>JSTL Demo</h3>
+	<c:forEach var="i" begin="1" end="10">
+		<c:out value="${i}"/><br/>
+	</c:forEach>
+	
+	<c:set var="age" value="20"/>
+	
+	<c:redirect url="https://www.google.co.in"/>
 	
 </body>
 </html>

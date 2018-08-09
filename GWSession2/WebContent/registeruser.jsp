@@ -16,6 +16,8 @@
 		user.email = request.getParameter("txtEmail");
 		user.password = request.getParameter("txtPassword");
 		
+		//response.sendRedirect("https://google.co.in");
+		
 		/*JDBCHelper helper = new JDBCHelper();
 		helper.createConnection();
 		int i = helper.registerUser(user);
