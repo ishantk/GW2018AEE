@@ -10,6 +10,14 @@
 </head>
 <body>
 
+	<h2>
+		Expression Language:
+		<br/>
+		
+		Name is: ${param.txtName}
+		
+	</h2>
+
 	<%
 		User user = new User();
 		user.name = request.getParameter("txtName");

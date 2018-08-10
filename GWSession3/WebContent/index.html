@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PrintTable App</title>
+
+<script type="text/javascript">
+
+	var request;
+
+	function sendInfo(){
+		var n = document.tableForm.txtNumber.value;
+		var url = "printtable.jsp?number="+n;
+
+		request = new XMLHttpRequest();
+
+		try{
+
+			request.onreadystatechange = getInfo;
+			request.open("GET", url, true);
+			request.send();
+			
+		}catch(e){
+			alert("Some Error");
+		}
+	}
+	
+	function getInfo(){
+		if(request.readyState == 4){
+			var res = request.responseText;
+			document.getElementById("data").innerHTML = res;
+		}
+	}
+	
+</script>
+
+</head>
+<body>
+
+	
+	<h3>Table of A Number</h3>
+	
+	<form name="tableForm">
+		Enter a Number: <input type="text" name="txtNumber" placeholder="eg: 5" onkeyup="sendInfo()"/>
+		<br/>
+		<!-- <input type="button" value="Get Table" onclick="sendInfo()"/> -->
+	</form>
+	
+	<h3>Table is: </h3>
+	<span id="data">
+		
+	</span>
+</body>
+</html>

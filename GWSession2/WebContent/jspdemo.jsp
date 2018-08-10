@@ -77,7 +77,7 @@
 	
 	<c:set var="age" value="20"/>
 	
-	<c:redirect url="https://www.google.co.in"/>
+	<%-- <c:redirect url="https://www.google.co.in"/> --%>
 	
 </body>
 </html>
