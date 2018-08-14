@@ -1,9 +1,13 @@
 package com.auribises.main;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import com.auribises.model.Employee;
 
@@ -11,16 +15,16 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		Employee emp1 = new Employee();
-		emp1.setName("Mike");
-		emp1.setEmail("mike@example.com");
+		/*Employee emp1 = new Employee();
+		emp1.setName("Sia");
+		emp1.setEmail("sia@example.com");
 		emp1.setSalary(37500);
-		emp1.setDept("HR");
+		emp1.setDept("Admin");
 		
-		Employee emp2 = new Employee(null, "Leo", 47000, "leo@example.com","R&D");
+		Employee emp2 = new Employee(null, "Kia", 47000, "kia@example.com","R&D");
 		
 		System.out.println(emp1);
-		System.out.println(emp2);
+		System.out.println(emp2);*/
 		
 		// Hibernate API's
 		Configuration config = null;
@@ -35,12 +39,45 @@ public class App {
 			
 			factory = config.buildSessionFactory();
 			
-			session = factory.openSession();
+			session = factory.openSession(); // connection with DB
 			
 			transaction = session.beginTransaction();
 			
-			session.save(emp1);
-			session.save(emp2);
+			// Insert Operation
+			//session.save(emp1);
+			//session.save(emp2);
+			
+			// Retrieve Operation
+			//Employee emp = (Employee)session.get(Employee.class, 5);
+			//System.out.println(emp);
+			
+			// Update Operation
+			//emp.setName("Sia Flynn");
+			//emp.setEmail("sia.f@example.com");
+			//emp.setSalary(57500);
+			//session.update(emp);
+			
+			// Delete Operation
+			//Employee emp = new Employee();
+			//emp.setId(2);
+			
+			//session.delete(emp);
+			
+			// Retrieve All
+			// 1. HQL | Hibernate Query Language
+			/*String hql = "From Employee"; // From Employee where salary > 50000
+			List<Employee> employees = session.createQuery(hql).list();
+			for(Employee emp : employees){
+				System.out.println(emp);
+			}*/
+			
+			// 2. Criteria API
+			Criteria criteria = session.createCriteria(Employee.class);
+			criteria.add(Restrictions.gt("salary", 40000));
+			List<Employee> employees = criteria.list();
+			for(Employee emp : employees){
+				System.out.println(emp);
+			}
 			
 			transaction.commit();
 			
