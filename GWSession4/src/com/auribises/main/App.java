@@ -72,12 +72,27 @@ public class App {
 			}*/
 			
 			// 2. Criteria API
-			Criteria criteria = session.createCriteria(Employee.class);
+			/*Criteria criteria = session.createCriteria(Employee.class);
 			criteria.add(Restrictions.gt("salary", 40000));
 			List<Employee> employees = criteria.list();
 			for(Employee emp : employees){
 				System.out.println(emp);
-			}
+			}*/
+			
+			
+			Employee emp1 = (Employee)session.get(Employee.class, 1);
+			Employee emp2 = (Employee)session.get(Employee.class, 5);
+			
+			System.out.println(emp1);
+			System.out.println(emp2);
+			
+			System.out.println("******** Cache - Level1 (By Sesssion Object) *********");
+			
+			Employee emp3 = (Employee)session.get(Employee.class, 1);
+			Employee emp4 = (Employee)session.get(Employee.class, 5);
+			
+			System.out.println(emp3);
+			System.out.println(emp4);
 			
 			transaction.commit();
 			
