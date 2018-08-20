@@ -10,7 +10,6 @@
       </id>
       <property name="name" column="NAME" />
       <property name="exp" column="EXPERIENCE" />
-      
       <list name="certificates" cascade="all">
       	<key column="managerid"/>
       	<list-index column="idx"/>
