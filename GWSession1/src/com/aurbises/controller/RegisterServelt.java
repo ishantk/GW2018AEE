@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.auribises.db.HibernateHelper;
 import com.auribises.db.JDBCHelper;
 import com.auribises.model.User;
 
@@ -35,23 +36,29 @@ public class RegisterServelt extends HttpServlet {
 		user.email = request.getParameter("txtEmail");
 		user.password = request.getParameter("txtPassword");
 		
-		JDBCHelper helper = new JDBCHelper(); // Load the Driver
+		/*JDBCHelper helper = new JDBCHelper(); // Load the Driver
 		helper.createConnection();
 		int i = helper.registerUser(user);
-		helper.closeConnection();
+		helper.closeConnection();*/
+		
+		HibernateHelper helper = new HibernateHelper();
+		helper.registerUser(user);
 		
 		// To send back Response
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
+		//String json = "{\"success\":\"registered\",\"name\":\""+user.name+"\"}";
 		
-		out.print("<html>");
+		out.print(user.name+" Registered !!");
+		
+		/*out.print("<html>");
 		if(i>0){
 			out.print("<b>Thank you For Registering with Us !</b>");
 		}else{
 			out.print("<b>Registration Failed ! Please Try Again Later</b>");
 		}
-		out.print("</html>");
+		out.print("</html>");*/
 		
 	}
 
