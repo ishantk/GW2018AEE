@@ -50,11 +50,19 @@ public class Connection {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void myInit(){
+		System.out.println("-- Connection myInit --");
+	}
+	
+	public void myDestroy(){
+		System.out.println("-- Connection myDestroy --");
+	}
 
 	@Override
 	public String toString() {
 		return "Connection [driverName=" + driverName + ", url=" + url + ", user=" + user + ", password=" + password
-				+ "]";
+				+ "] | "+super.toString();
 	}
 	
 	

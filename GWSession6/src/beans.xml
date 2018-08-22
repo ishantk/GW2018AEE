@@ -8,18 +8,33 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     
-   <bean id="con1" class="com.auribises.bean.Connection">
+   <!-- <bean id="con1" class="com.auribises.bean.Connection" scope="prototype"> -->
+  <!--  <bean id="con1" class="com.auribises.bean.Connection" init-method="myInit" destroy-method="myDestroy">
        <property name="driverName" value="x.y.z.a"/>
        <property name="url" value="some://anyurl"/>
        <property name="user" value="root"/>
        <property name="password" value="pass123"/>
    </bean>
    
-   <bean id="con2" class="com.auribises.bean.Connection">
+   <bean class="com.auribises.bean.PostProcessor"/> -->
+   
+   <!-- <bean id="con2" class="com.auribises.bean.Connection">
        <property name="driverName" value="p.y.z.a"/>
        <property name="url" value="any://anyurl"/>
        <property name="user" value="john"/>
        <property name="password" value="john123"/>
+   </bean> -->
+   
+   <bean id="fRef" class="com.auribises.bean.Father">
+       <property name="fname" value="John"/>
+       <property name="lname" value="Watson"/>
+       <property name="wealth" value="100000"/>
+   </bean>
+   
+    <bean id="cRef" class="com.auribises.bean.Child" parent="fRef">
+       <property name="fname" value="Jennie"/>
+       <property name="vehicles" value="3"/>
+       <property name="compName" value="ABC International"/>
    </bean>
 
 </beans>
